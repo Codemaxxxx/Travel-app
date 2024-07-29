@@ -6,7 +6,65 @@
     <title>Travel App</title>
 </head>
 <body>
-    
-    <h1>Hello world</h1>
+
+    <div class="left-container">
+        <div class="image">
+            <img src="" class="left-image" alt="">
+        </div>
+
+        <div class="left-form">
+            <form onsubmit="Client.formHandler(Event)">
+                <div class="city-label">
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city">
+                </div>
+                <div class="date-label">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date">
+                </div>
+
+                <div class="form-submit">
+                    <button class="submit-btn">Discover</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="right-form">
+        <div class="right-container">
+            <div class="destination-data-1">
+                <h4 id="days-rem"></h4>
+                <p class="city-name"></p>
+                <p class="temp"></p>
+                <p class="max-temp"></p>
+                <p class="min-temp"></p>
+                <p class="weather"></p>
+                <div class="location-image">
+                    <img src="" class="right-image-1" alt="">
+                </div> 
+            </div>
+            <div class="destination-data-2">
+                <h4 id="days-rem"></h4>
+                <p class="city-name"></p>
+                <p class="temp"></p>
+                <p class="max-temp"></p>
+                <p class="min-temp"></p>
+                <p class="weather"></p>
+                <div class="location-image">
+                    <img src="" class="right-image-2" alt="">
+                </div> 
+            </div>
+            <div class="destination-data-3">
+                <h4 id="days-rem"></h4>
+                <p class="city-name"></p>
+                <p class="temp"></p>
+                <p class="max-temp"></p>
+                <p class="min-temp"></p>
+                <p class="weather"></p>
+                <div class="location-image">
+                    <img src="" class="right-image-3" alt="">
+                </div> 
+            </div>
+        </div>
+    </div>
 </body>
 </html>
