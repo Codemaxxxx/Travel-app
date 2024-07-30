@@ -9,7 +9,7 @@ const formHandler = (e) => {
     //check if function works
     console.log("I am working fine")
 
-    const destination = getCity();
+    const Destination = getCity();
 }
 
 const getCity= async () => {
@@ -18,7 +18,10 @@ const getCity= async () => {
         headers: {
             "Content-Type": "application/json"
         }
-    })
+    });
+
+    console.log(data);
+    return data
 }
 
 export { formHandler }

@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
+const { getCityDestination } = require("./getCityDes.js")
 
 //Initialise the Middleware
 app.use(cors());
@@ -22,6 +23,8 @@ app.get("/", (req, res) => {
 app.post("/getCity", async (req, res) => {
     const { city } = req.body
     const Destination = await getCityDestination(city, username)
+    
+    res.send(Destination)
 })
 
 
