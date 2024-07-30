@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "css-loader": "^7.1.2",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "sass": "^1.77.8",
     "webpack-dev-server": "^5.0.4"
