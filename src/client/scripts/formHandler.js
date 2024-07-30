@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const form = document.querySelector('form');
+const dateInput = document.querySelector("#date");
 
 
 const formHandler = (e) => {
@@ -10,6 +11,15 @@ const formHandler = (e) => {
     console.log("I am working fine")
 
     const Destination = getCity();
+    const { name, lng, lat } = Destination
+
+
+    //Getting User data Input
+    const date = dateInput.value
+    const DayRem = getDayRem(date)
+    console.log(DayRem)
+    
+    //const weather = getWeatherData(lng, lat, DayRem)
 }
 
 const getCity= async () => {
@@ -22,6 +32,15 @@ const getCity= async () => {
 
     console.log(data);
     return data
+}
+
+const getDayRem = (date) => {
+    //setting the start and end Date
+    const presentDate = new Date()
+    const futureDate = new Date(date)
+
+    const timeDifference = futureDate.getTime() - presentDate.getTime()
+    console.log(timeDifference)
 }
 
 export { formHandler }
