@@ -17,9 +17,8 @@ const formHandler = (e) => {
     //Getting User data Input
     const date = dateInput.value
     const DayRem = getDayRem(date)
-    console.log(DayRem)
     
-    //const weather = getWeatherData(lng, lat, DayRem)
+    const weather = getWeatherData(lng, lat, DayRem)
 }
 
 const getCity= async () => {
@@ -40,7 +39,19 @@ const getDayRem = (date) => {
     const futureDate = new Date(date)
 
     const timeDifference = futureDate.getTime() - presentDate.getTime()
-    console.log(timeDifference)
+
+    const DayRem = Math.ceil(timeDifference / (1000 * 3600 *24))
+    
+    
+    return DayRem 
+}
+
+const getWeatherData = async (lng, lat, DayRem ) => {
+    const { data } = await axios.post("http://localhost:8000/getWeatherData", {
+        lng,
+        lat,
+        DayRem
+    });
 }
 
 export { formHandler }
