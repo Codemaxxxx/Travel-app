@@ -1,1 +1,54 @@
+:root {
+    --text-background-color: hsl(188, 86%, 53%);
+    --text-background-color-2: hsl(262, 83%, 58%);
+    --text-color: hsl(166, 76%, 97%);
+    --btn-color: hsl(144, 61%, 20%);
+    --background-color: hsl(24, 6%, 83%);
+}
 
+
+body {
+    display: flex;
+    margin-top: 40px;
+    gap: 10em;
+    max-width: 100%;
+    background-color: var(--background-color);
+    justify-content: center;
+
+    .left-container {
+        margin-left: 2em;
+
+        form {
+            margin-top: 5em;
+            display: flex;
+            gap: 2em;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(1500deg, var(--text-background-color), var(--text-background-color-2));
+            padding: 2em;
+            border-radius: 1em;
+
+            input {
+                border: none;
+                outline: none;
+                padding: 7px;
+                border-radius: 4px;
+            }
+
+        }
+
+        .submit-btn {
+            padding: 1em;
+            border-radius: 1.2em;
+            border: none;
+            background-color: var(--btn-color);
+            color: var(--text-color);
+        }
+    }
+
+    .destination-data {
+        background-color: var(--text-background-color);
+        padding: 10px;
+        border-radius: 7px;
+    }
+}

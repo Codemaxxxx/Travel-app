@@ -77,7 +77,7 @@ const uddateUI = (DayRem, city, pic, weather) => {
     document.querySelector(".temp").innerHTML = DayRem > 7 ? `Weather Forecast: ${weather.temp}&degC` : `Temperature: ${weather.temp}&degC`;
     document.querySelector(".max-temp").innerHTML = DayRem > 7 ? `High Temperature Forecast: ${weather.app_max_temp}&degC` : "";
     document.querySelector(".min-temp").innerHTML = DayRem > 7 ? `Low Temperature Forecast: ${weather.app_min_temp}&degC` : "";
-    document.querySelector(".location-image").innerHTML = `<image src = "${pic}" alt = "image describes the city landscape">`;
+    document.querySelector(".location-image").innerHTML = `<image src = "${pic}" alt = "image describes the city landscape" width = "100px">`;
     document.querySelector(".image").innerHTML = `<image src = "${pic}" alt = "image describes the city landscape">`;
     document.querySelector(".destination-data").style.display = "block"
     
