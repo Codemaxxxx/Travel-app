@@ -4,13 +4,13 @@ const form = document.querySelector('form');
 const dateInput = document.querySelector("#date");
 
 
-const formHandler = (e) => {
+const formHandler = async (e) => {
     e.preventDefault()
 
     //check if function works
     console.log("I am working fine")
 
-    const Destination = getCity();
+    const Destination = await getCity();
     const { name, lng, lat } = Destination
 
 
@@ -18,11 +18,15 @@ const formHandler = (e) => {
     const date = dateInput.value
     const DayRem = getDayRem(date)
     
-    const weather = getWeatherData(lng, lat, DayRem)
+    const weather =  await getWeatherData(lng, lat, DayRem)
+    console.log(weather)
+
+    const { image } = await getCityPic(name)
+
+    uddateUI(DayRem, name, image, weather)
 }
 
 const getCity= async () => {
-    console.log("function is working in the server");
     const { data } = await axios.post("http://localhost:8000/getCity", form, {
         headers: {
             "Content-Type": "application/json"
@@ -43,7 +47,7 @@ const getDayRem = (date) => {
     const DayRem = Math.ceil(timeDifference / (1000 * 3600 *24))
     
     
-    return DayRem 
+    return DayRem
 }
 
 const getWeatherData = async (lng, lat, DayRem ) => {
@@ -52,6 +56,31 @@ const getWeatherData = async (lng, lat, DayRem ) => {
         lat,
         DayRem
     });
+
+    return data
+}
+
+const getCityPic = async (name) => {
+    const { data } = await axios.post("http://localhost:8000/getPic", {
+        name
+    });
+
+    console.log(data)
+    return data
+}
+
+
+const uddateUI = (DayRem, city, pic, weather) => {
+    document.querySelector("#days-rem").innerHTML = `Your Trip starts in ${DayRem} days from now`;
+    document.querySelector(".city-name").innerHTML = `Desired Destination is ${city}`;
+    document.querySelector(".weather").innerHTML = DayRem > 7 ? `Weather is ${weather.description}` : `Weather is expected to be ${weather.description}`;
+    document.querySelector(".temp").innerHTML = DayRem > 7 ? `Weather Forecast: ${weather.temp}&degC` : `Temperature: ${weather.temp}&degC`;
+    document.querySelector(".max-temp").innerHTML = DayRem > 7 ? `High Temperature Forecast: ${weather.app_max_temp}&degC` : "";
+    document.querySelector(".min-temp").innerHTML = DayRem > 7 ? `Low Temperature Forecast: ${weather.app_min_temp}&degC` : "";
+    document.querySelector(".location-image").innerHTML = `<image src = "${pic}" alt = "image describes the city landscape">`;
+    document.querySelector(".image").innerHTML = `<image src = "${pic}" alt = "image describes the city landscape">`;
+    document.querySelector(".destination-data").style.display = "block"
+    
 }
 
 export { formHandler }
