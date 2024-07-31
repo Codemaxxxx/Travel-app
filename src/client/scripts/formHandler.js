@@ -2,10 +2,18 @@ import axios from "axios"
 
 const form = document.querySelector('form');
 const dateInput = document.querySelector("#date");
+const cityInput = document.querySelector("#city");
+const error = document.querySelector("#error")
 
 
 const formHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    //Validating Inputs
+
+    if(!validInput()) {
+        return
+    }
 
     //check if function works
     console.log("I am working fine")
@@ -81,6 +89,19 @@ const uddateUI = (DayRem, city, pic, weather) => {
     document.querySelector(".image").innerHTML = `<image src = "${pic}" alt = "image describes the city landscape">`;
     document.querySelector(".destination-data").style.display = "block"
     
+}
+
+//Validating Inputs
+
+const validInput = () => {
+    if(!cityInput.value) {
+        error.innerHTML = "Please enter a valid Destination"
+        error.style.display = "block";
+        return;
+
+    }
+
+    return true
 }
 
 export { formHandler }
