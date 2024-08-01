@@ -1,9 +1,11 @@
 import axios from "axios"
+import { getDayRem } from "./getDayRem";
 
 const form = document.querySelector('form');
 const dateInput = document.querySelector("#date");
 const cityInput = document.querySelector("#city");
 const error = document.querySelector("#error")
+const dateError = document.querySelector("#date_error")
 
 
 const formHandler = async (e) => {
@@ -19,6 +21,14 @@ const formHandler = async (e) => {
     console.log("I am working fine")
 
     const Destination = await getCity();
+
+    if(Destination.error) {
+        error.innerHTML = `${Destination.message}`
+        error.style.display = "block"
+        return
+    }
+
+    error.style.display = "none"
     const { name, lng, lat } = Destination
 
 
@@ -27,6 +37,14 @@ const formHandler = async (e) => {
     const DayRem = getDayRem(date)
     
     const weather =  await getWeatherData(lng, lat, DayRem)
+    if(weather.error) {
+        dateError.innerHTML = `${weather.message}`
+        dateError.style.display = "block"
+
+        return
+    }
+
+    dateError.style.display = "none"
     console.log(weather)
 
     const { image } = await getCityPic(name)
@@ -43,19 +61,6 @@ const getCity= async () => {
 
     console.log(data);
     return data
-}
-
-const getDayRem = (date) => {
-    //setting the start and end Date
-    const presentDate = new Date()
-    const futureDate = new Date(date)
-
-    const timeDifference = futureDate.getTime() - presentDate.getTime()
-
-    const DayRem = Math.ceil(timeDifference / (1000 * 3600 *24))
-    
-    
-    return DayRem
 }
 
 const getWeatherData = async (lng, lat, DayRem ) => {
@@ -94,13 +99,29 @@ const uddateUI = (DayRem, city, pic, weather) => {
 //Validating Inputs
 
 const validInput = () => {
+    error.style.display = "none";
+    dateError.style.display = "none";
+
+    console.log("validating works")
+
+
     if(!cityInput.value) {
         error.innerHTML = "Please enter a valid Destination"
         error.style.display = "block";
         return;
-
+    }
+    if(!dateInput.value) {
+        dateError.innerHTML = "Please enter a valid date"
+        dateError.style.display = "block";
+        return;
     }
 
+    if(getDayRem(dateInput.value) < 0) {
+        dateError.innerHTML = `Date cannot be in the past`;
+        dateError.style.display = "block";
+        return
+    }
+    
     return true
 }
 

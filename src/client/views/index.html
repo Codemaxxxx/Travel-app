@@ -21,6 +21,8 @@
                 <div class="date-label">
                     <label for="date">Date</label>
                     <input type="date" name="date" id="date">
+
+                    <div id="date_error"></div>
                 </div>
 
                 <div class="form-submit">
@@ -32,41 +34,25 @@
 
     <!--User Output-->
     <div class="right-container">
-        <div class="output">
-            <div class="destination-data">
-                <h4 id="days-rem"></h4>
-                <p class="city-name"></p>
-                <p class="temp"></p>
-                <p class="max-temp"></p>
-                <p class="min-temp"></p>
-                <p class="weather"></p>
-                <div class="location-image">
-                    <img src="" class="right-image-1" alt="">
-                </div> 
-            </div>
-            <div class="destination-data-2">
-                <h4 id="days-rem"></h4>
-                <p class="city-name"></p>
-                <p class="temp"></p>
-                <p class="max-temp"></p>
-                <p class="min-temp"></p>
-                <p class="weather"></p>
-                <div class="location-image">
-                    <img src="" class="right-image-2" alt="">
-                </div> 
-            </div>
-            <div class="destination-data-3">
-                <h4 id="days-rem"></h4>
-                <p class="city-name"></p>
-                <p class="temp"></p>
-                <p class="max-temp"></p>
-                <p class="min-temp"></p>
-                <p class="weather"></p>
-                <div class="location-image">
-                    <img src="" class="right-image-3" alt="">
-                </div> 
-            </div>
+
+        <div class="destination-data">
+            <h4 id="days-rem"></h4>
+            <p class="city-name"></p>
+            <p class="temp"></p>
+            <p class="max-temp"></p>
+            <p class="min-temp"></p>
+            <p class="weather"></p>
+            <div class="location-image"></div> 
         </div>
     </div>
 </body>
+<script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', async () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+</script>
 </html>

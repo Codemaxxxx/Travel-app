@@ -2,7 +2,24 @@ const axios = require('axios')
 
 
 const getWeatherData = async (lat, lng, DayRem, weather_API_key) => {
+    if(!DayRem) {
+        const errorMsg = {
+            message: "Date is in the past",
+            error: true
+        }
+
+        return errorMsg
+    }
     console.log("working!!")
+
+    if(DayRem < 0) {
+        const errorMsg = {
+            message: "Date is in the past",
+            error: true
+        }
+
+        return errorMsg
+    }
     if(DayRem > 0 && DayRem <= 7) {
         const { data } = await axios.get(`https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lng}&units=M&key=${weather_API_key}`)
         const {weather, temp} = data.data[0]
