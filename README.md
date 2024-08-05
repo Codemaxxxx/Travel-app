@@ -24,9 +24,9 @@ Testing and debugging were also important to ensure that applications funtion as
 
 ## Environment Variables to run the Project
 
-User = dwill24
-WEATHER_API_KEY = 743334244a2340a7a05bbffe5f4444bb
-PIXABAY_API_KEY = 32320192-c008c620c8866b8468d144635
+WEATHER_API_KEY=xxxxx-xxxx-xxxx
+PIXABAY_API_KEY=xxx-xxx-xxx
+USER=xxx-xxx-xxx
 
 
 
