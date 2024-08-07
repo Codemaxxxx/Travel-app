@@ -1,7 +1,11 @@
 {
   "name": "travel-app",
+  "engines": {
+    "node": "20.12.2"
+  },
   "version": "1.0.0",
-  "main": "bundle.js",
+  "main": "index.js",
+  
   "scripts": {
     "test": "jest",
     "start": "nodemon ./src/server/server.js",
