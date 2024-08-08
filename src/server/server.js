@@ -15,6 +15,8 @@ app.use(cors());
 port = 8000
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static('dist'));
 
 dotenv.config()
@@ -42,7 +44,7 @@ app.post("/getWeatherData", async (req, res) => {
 })
 app.post("/getPic", async (req, res) => {
     const { name } = req.body
-    console.log(name)
+    //console.log(name)
     const Picture = await getCityPic(name, pixabay_API_key)
     
     res.send(Picture)

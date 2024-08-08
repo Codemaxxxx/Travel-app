@@ -18,7 +18,7 @@ const formHandler = async (e) => {
     }
 
     //check if function works
-    console.log("I am working fine")
+    //console.log("I am working fine")
 
     const Destination = await getCity();
 
@@ -45,7 +45,7 @@ const formHandler = async (e) => {
     }
 
     dateError.style.display = "none"
-    console.log(weather)
+    //console.log(weather)
 
     const { image } = await getCityPic(name)
 
@@ -59,7 +59,7 @@ const getCity= async () => {
         }
     });
 
-    console.log(data);
+    //console.log(data);
     return data
 }
 
@@ -78,7 +78,7 @@ const getCityPic = async (name) => {
         name
     });
 
-    console.log(data)
+    //console.log(data)
     return data
 }
 
@@ -102,7 +102,7 @@ const validInput = () => {
     error.style.display = "none";
     dateError.style.display = "none";
 
-    console.log("validating works")
+    //console.log("validating works")
 
 
     if(!cityInput.value) {
