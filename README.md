@@ -44,7 +44,15 @@ npm install ---> for installing required dependencies from the Node Package Mana
 
 The env file is to be added to the gitignore file
 
+Node version - v20.12.2
+
+npm run start - to start the server
+npm run build - for Production
+npm run dev - for Development
+
+
 
 ## Testing
 
-Install jest and run the command npm run test in the command line (Terminal) to get results
+Install jest in the command line (Terminal) to get results
+npm test - for testing and debugging
