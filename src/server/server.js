@@ -12,7 +12,7 @@ const { getCityPic } = require("./getCityPic.js")
 //Initialise the Middleware
 app.use(cors());
 
-port = 8000
+const port = 8000
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
